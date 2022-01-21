@@ -41,4 +41,7 @@ if single_character == word[4]:
 if count == 0:
     print("No instances of " + single_character + " found in " + word)
 else:
-    print(str(count) + " instances of " + single_character + " found in " + word)
+    if count == 1:
+        print(str(count) + " instance of " + single_character + " found in " + word)
+    else: 
+        print(str(count) + " instances of " + single_character + " found in " + word)
