@@ -9,7 +9,6 @@ guess: str = input(f"What is your {length_secret_word}-letter guess? ")
 while len(guess) != len(secret_word):
     guess = input(f"That was not {length_secret_word} letters! Try again: ")
 
-
 i: int = 0
 
 WHITE_BOX: str = "\U00002B1C"
