@@ -19,7 +19,7 @@ store_emoji: str = ""
 
 while i < length_secret_word: 
     if secret_word[i] == guess[i]:
-        store_emoji = store_emoji + GREEN_BOX 
+        store_emoji = store_emoji + GREEN_BOX  # if character is in the word and right placement then mark as green box
     else: 
         character_exist: bool = False
         alt: int = 0
@@ -27,11 +27,11 @@ while i < length_secret_word:
             if secret_word[alt] == guess[i]:
                 character_exist = True
             else:
-                alt = alt + 1
-        if character_exist is True:
+                alt = alt + 1  # goes back to the top of the while loop
+        if character_exist is True:  # if the character is somewhere in the word it will mark as yellow box
             store_emoji = store_emoji + YELLOW_BOX 
         else:
-            store_emoji = store_emoji + WHITE_BOX 
+            store_emoji = store_emoji + WHITE_BOX   # otherwise white 
     i = i + 1
 
 print(store_emoji)
