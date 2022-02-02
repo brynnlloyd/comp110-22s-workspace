@@ -39,4 +39,13 @@ def emojified(guess: str, secret_word: str) -> str:
     return store_emoji
 
 
-# def input_guess(expected_length: int) -> str:
+def input_guess(expected_length: int) -> str:
+    guess = input(f"Enter a {expected_length} character word: ")
+    while len(guess) != expected_length:
+        guess = input(f"That wasn't {expected_length} chars! Try again: ")
+    if len(guess) == expected_length:
+        return str(guess)
+
+
+def main() -> None:
+    """The entrypoint of the program and main game loop."""
