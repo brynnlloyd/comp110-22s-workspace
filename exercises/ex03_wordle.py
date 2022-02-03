@@ -12,7 +12,7 @@ def contains_char(searched_word: str, single_character: str) -> bool:
         if searched_word[alt] == single_character:
             character_exist = True
         else:
-            alt = alt + 1
+            alt += 1
     if character_exist is True:
         return True
     else:
@@ -20,7 +20,7 @@ def contains_char(searched_word: str, single_character: str) -> bool:
 
 
 def emojified(guess: str, secret_word: str) -> str:
-    """Emoji color coded if letters in guess are in the secret word."""
+    """Emoji color coded if letters in guess are in or not in the secret word."""
     assert len(guess) == len(secret_word)
     i: int = 0
     WHITE_BOX: str = "\U00002B1C"
@@ -29,13 +29,13 @@ def emojified(guess: str, secret_word: str) -> str:
     store_emoji: str = ""
     while i < len(secret_word):
         if secret_word[i] == guess[i]:
-            store_emoji = store_emoji + GREEN_BOX  # if letter i is in secret word i then given green box
+            store_emoji += GREEN_BOX  # if letter i is in secret word i then given green box
         else:
             if contains_char(secret_word, guess[i]) is True:
-                store_emoji = store_emoji + YELLOW_BOX
+                store_emoji += YELLOW_BOX
             else:
-                store_emoji = store_emoji + WHITE_BOX
-        i = i + 1
+                store_emoji += WHITE_BOX
+        i += 1
     return store_emoji
 
 
@@ -44,8 +44,7 @@ def input_guess(expected_length: int) -> str:
     guess: str = input(f"Enter a {expected_length} character word: ")
     while len(guess) != expected_length:
         guess = str(input(f"That wasn't {expected_length} chars! Try again: "))
-    if len(guess) == expected_length:
-        return guess
+    return guess
 
 
 def main() -> None:
@@ -59,10 +58,14 @@ def main() -> None:
         user_guess: str = input_guess(len(secret_word))
         print(emojified(user_guess, secret_word))
         if user_guess != secret_word:
-            turn = turn + 1
+            turn += 1
         else: 
             user_won = True
     if user_won is True:
         print(f"You won in {turn}/6 turns!")
     else:
         print("X/6 - Sorry, try again tomorrow! ")
+
+
+if __name__ == "__main__":
+    main()
