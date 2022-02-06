@@ -29,12 +29,12 @@ def emojified(guess: str, secret_word: str) -> str:
     store_emoji: str = ""
     while i < len(secret_word):
         if secret_word[i] == guess[i]:
-            store_emoji += GREEN_BOX  # if letter i is in secret word i then given green box
+            store_emoji += GREEN_BOX  # if letter i is in secret word and in correct i then given green box
         else:
-            if contains_char(secret_word, guess[i]) is True:
-                store_emoji += YELLOW_BOX
+            if contains_char(secret_word, guess[i]) is True:  # use of contains_char function
+                store_emoji += YELLOW_BOX  # if letter i is in secret word but not in right order give yellow box
             else:
-                store_emoji += WHITE_BOX
+                store_emoji += WHITE_BOX  # if letter is not in secret word then give white box
         i += 1
     return store_emoji
 
@@ -43,7 +43,7 @@ def input_guess(expected_length: int) -> str:
     """If the guess is the right character length of the word."""
     guess: str = input(f"Enter a {expected_length} character word: ")
     while len(guess) != expected_length:
-        guess = str(input(f"That wasn't {expected_length} chars! Try again: "))
+        guess = str(input(f"That wasn't {expected_length} chars! Try again: ")) 
     return guess
 
 
@@ -54,8 +54,8 @@ def main() -> None:
     turn: int = 1
     while turn <= 6 and user_won is False:
         print(f" === Turn {turn}/6 ===")
-        user_guess: str = input_guess(len(secret_word))
-        print(emojified(user_guess, secret_word))
+        user_guess: str = input_guess(len(secret_word))  # use of input_guess function
+        print(emojified(user_guess, secret_word))  # use of emojified function
         if user_guess != secret_word:
             turn += 1
         else: 
